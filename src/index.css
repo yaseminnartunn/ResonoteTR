@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --color-ink: #0b0b0c;
+  --color-panel: #121214;
+  --color-raised: #1a1a1e;
+  --color-line: #2a2a31;
+  --color-gold: #f4b942;
+  --color-mint: #7ee0c8;
+  --color-paper: #ece7dc;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("IBM Plex Sans");
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  background: var(--color-ink);
+  color: var(--color-paper);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  letter-spacing: -0.011em;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-gold) 40%, transparent);
+}
+
+.chunk-glow {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--color-gold) 70%, transparent),
+    0 0 28px color-mix(in srgb, var(--color-gold) 18%, transparent);
+}
+
+.wave-bar {
+  transform-origin: center bottom;
+  animation: wavePulse 0.9s ease-in-out infinite;
+}
+
+@keyframes wavePulse {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes avatarPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-gold) 0%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 8px color-mix(in srgb, var(--color-gold) 18%, transparent);
+  }
+}
+
+.avatar-live {
+  animation: avatarPulse 1.4s ease-in-out infinite;
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #3a3a44;
+  border-radius: 99px;
+}
+
+.scroll-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
